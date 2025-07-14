@@ -88,8 +88,8 @@ class ShapeProcessor:
         if isinstance(color_attr, inkex.LinearGradient):
             # Get first color of the gradient for now
             first_stop = color_attr.href.stops[0]
-            fisrt_stop_style = first_stop.specified_style()
-            color_str = fisrt_stop_style.get("stop-color")
+            first_stop_style = first_stop.specified_style()
+            color_str = first_stop_style.get("stop-color")
 
             # # TODO: Add support for linear gradients.
             # # Retrieve gradient attributes
@@ -200,7 +200,7 @@ class ShapeProcessor:
         # After this, path will now contain only M, L, C, and Z commands
         path = []
         prev_cmd = None
-        for idx, segment in enumerate(elem):
+        for segment in elem:
             cmd = (segment.letter).lower()
             if cmd == "z":
                 continue
